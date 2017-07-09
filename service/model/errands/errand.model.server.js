@@ -14,7 +14,9 @@ module.exports = function (app, mongoose) {
 
         serviceManId:{type: mongoose.Schema.Types.ObjectId, ref: 'User'},
 
-        status:{type:String, enum:["NEW", "INPROGRESS", "DONE"], default:"NEW"}
+        status:{type:String, enum:["NEW", "INPROGRESS", "DONE"], default:"NEW"},
+
+        zip: {type:Number, required:true}
     });
 
     return ErrandSchema;
