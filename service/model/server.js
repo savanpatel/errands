@@ -14,13 +14,13 @@ module.exports = function (app) {
     require('./message/message.schema.server')(app, mongoose);
     var messageModelAPI = require('./message/message.model.server')(app, mongoose, logger);
 
-   // require('./errands/errand.schema.server')(app, mongoose);
-   // var errandModelAPI = require('./errands/errand.model.server')(app, mongoose, logger);
+    require('./errands/errand.schema.server')(app, mongoose);
+    var errandModelAPI = require('./errands/errand.model.server')(app, mongoose, logger);
 
     var api = {
         userModelAPI : userModelAPI,
-        messageModelAPI: messageModelAPI
-    //    errandModelAPI:errandModelAPI
+        messageModelAPI: messageModelAPI,
+        errandModelAPI:errandModelAPI
     };
     return api;
-}
+};

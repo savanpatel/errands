@@ -20,7 +20,6 @@ module.exports = function (app, mongoose, logger) {
     function createErrand(errand) {
 
         var deferred = q.defer();
-
         ErrandModel.create(errand, function (err, dbErrand) {
 
             if (err) {
@@ -37,14 +36,13 @@ module.exports = function (app, mongoose, logger) {
     function updateErrand(errandId, errand) {
 
         var deferred = q.defer();
-        ErrandModel.findById(userId, function (err, dbErrand) {
+        ErrandModel.findById(errandId, function (err, dbErrand) {
 
             if (err) {
                 logger.error('Unable to find errand.' + err);
                 deferred.reject(err);
             } else {
-                user.password = dbUser.password;
-                ErrandModel.update({_id:userId},{$set:user}, function (err, dbErrand) {
+                ErrandModel.update({_id:errandId},{$set:errand}, function (err, dbErrand) {
                     if(err) {
                         logger.error("Can not update errand with id " + errandId  + " Error: " + err);
                         deferred.reject(err);
@@ -56,14 +54,12 @@ module.exports = function (app, mongoose, logger) {
             }
         });
 
-
         return deferred.promise;
     }
 
     function findErrandById(errandId) {
 
         var deferred = q.defer();
-
         ErrandModel.findById(errandId, function (err, dbErrand) {
 
             if(err){
@@ -80,7 +76,6 @@ module.exports = function (app, mongoose, logger) {
     function findErrandByUserId(userId) {
 
         var deferred = q.defer();
-
         ErrandModel.find({"userId":userId}, function (err, dbErrand) {
 
             if(err){
@@ -96,7 +91,6 @@ module.exports = function (app, mongoose, logger) {
 
     function findErrandByServiceManId(serviceManId) {
         var deferred = q.defer();
-
         ErrandModel.find({"serviceManId":serviceManId}, function (err, dbErrand) {
 
             if(err){
@@ -112,7 +106,6 @@ module.exports = function (app, mongoose, logger) {
 
     function findErrandByStatus(status) {
         var deferred = q.defer();
-
         ErrandModel.find({"status":status}, function (err, dbErrand) {
 
             if(err){
@@ -128,7 +121,6 @@ module.exports = function (app, mongoose, logger) {
 
     function findErrandByZip(zip) {
         var deferred = q.defer();
-
         ErrandModel.find({"zip":zip}, function (err, dbErrand) {
 
             if(err){
