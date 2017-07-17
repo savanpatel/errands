@@ -28,7 +28,7 @@ module.exports = function (app, mongooseAPI, passport) {
         var message = req.body;
 
         if(null == message){
-            req.sendStatus(500).send("null/empty user");
+            req.sendStatus(500).send("null/empty message");
             return;
         }
 
@@ -57,7 +57,7 @@ module.exports = function (app, mongooseAPI, passport) {
                 if(null == message){
                     res.send(404);
                 }else {
-                    res.send(user);
+                    res.send(message);
                 }
             }, function (err) {
                 res.sendStatus(500).send(err);

@@ -17,10 +17,13 @@ module.exports = function (app) {
     require('./errands/errand.schema.server')(app, mongoose);
     var errandModelAPI = require('./errands/errand.model.server')(app, mongoose, logger);
 
+    require('./payment/payment.schema.server')(app, mongoose);
+    var paymentModelAPI = require('./errands/errand.model.server')(app, mongoose, logger);
     var api = {
         userModelAPI : userModelAPI,
         messageModelAPI: messageModelAPI,
-        errandModelAPI:errandModelAPI
+        errandModelAPI:errandModelAPI,
+        paymentModelAPI: paymentModelAPI
     };
     return api;
 };
