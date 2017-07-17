@@ -54,7 +54,7 @@ module.exports = function (app, mongooseAPI, passport) {
                 if(null == errand){
                     res.sendStatus(404);
                 }else {
-                    res.send(user);
+                    res.send(errand);
                 }
             }, function (err) {
                 res.sendStatus(500).send(err);
